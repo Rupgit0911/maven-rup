@@ -1,28 +1,31 @@
-pipeline{
-  agent any
-  stages{
-    stage('SCM Checkout'){
-      steps{
-        withMaven(maven : 'maven-3.6.3'){
-         sh 'mvn clean compile'
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
         }
-      }
+         stage('Build') {
+            steps {
+                echo 'Building'
+            }
+        }
+         stage('Deploy') {
+            steps {
+                echo 'Deploying'
+            }
+        }
+         stage('Test') {
+            steps {
+                echo 'Testing'
+            }
+        }
+         stage('Release') {
+            steps {
+                echo 'Releasing'
+            }
+        }
     }
-    stage('Testing Stage'){
-      steps{
-       withMaven(maven : 'maven-3.6.3'){
-        sh 'mvn clean test'
-        }
-      }
-    }
-      stage('Deployment Stage'){
-        steps{
-        withMaven(maven : 'maven-3.6.3'){
-         sh 'mvn deploy'
-        }
-        }
-      }
-  }
 }
-          
-        
